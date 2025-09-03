@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useState, useEffect } from 'react';
-import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { FoodItem } from '../types';
@@ -98,7 +97,7 @@ const DashboardPage: React.FC = () => {
                   <tr key={food.id} className="border-b border-gray-200 hover:bg-gray-50">
                     <td className="p-4 text-gray-700 whitespace-nowrap">{food.date}</td>
                     <td className="p-4">
-                      <Image src={food.imageUrl} alt={food.name} width={64} height={64} className="object-cover rounded-md" />
+                      <img src={food.imageUrl} alt={food.name} width={64} height={64} className="object-cover rounded-md" />
                     </td>
                     <td className="p-4 font-medium text-gray-900">{food.name}</td>
                     <td className="p-4 text-gray-700">
