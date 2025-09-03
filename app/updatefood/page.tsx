@@ -1,12 +1,11 @@
 "use client";
 
-import React, { useState, useEffect, ChangeEvent, FormEvent } from 'react';
+import React, { Suspense, useState, useEffect, ChangeEvent, FormEvent } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
-import Image from 'next/image';
 import Link from 'next/link';
 import { FoodItem } from '../types';
 
-export default function UpdateFoodPage() {
+function UpdateFoodComponent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const id = searchParams.get('id');
@@ -74,11 +73,10 @@ export default function UpdateFoodPage() {
           <div className="flex justify-center">
             <label htmlFor="image" className="group relative h-32 w-32 cursor-pointer rounded-full border-2 border-dashed border-gray-300 transition hover:border-white">
               {imagePreview ? (
-                <Image
+                <img
                   src={imagePreview}
                   alt="Food preview"
-                  fill
-                  className="rounded-full object-cover"
+                  className="rounded-full object-cover h-32 w-32"
                 />
               ) : (
                 <div className="flex h-full w-full flex-col items-center justify-center text-gray-200">
@@ -144,5 +142,13 @@ export default function UpdateFoodPage() {
         </p>
       </div>
     </main>
+  );
+}
+
+export default function UpdateFoodPage() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <UpdateFoodComponent />
+    </Suspense>
   );
 }

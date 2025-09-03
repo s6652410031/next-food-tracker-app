@@ -2,7 +2,6 @@
 
 import React, { useState, ChangeEvent, FormEvent } from 'react';
 import { useRouter } from 'next/navigation';
-import Image from 'next/image';
 import Link from 'next/link';
 import { useAuth } from '../context/AuthContext';
 
@@ -66,11 +65,10 @@ export default function ProfilePage() {
             <div className="flex justify-center">
               <label htmlFor="profileImage" className="group relative h-32 w-32 cursor-pointer rounded-full border-2 border-dashed border-gray-300 transition hover:border-white">
                 {imagePreview ? (
-                  <Image
+                  <img
                     src={imagePreview}
                     alt="Profile preview"
-                    fill
-                    className="rounded-full object-cover"
+                    className="rounded-full object-cover h-32 w-32"
                   />
                 ) : (
                   <div className="flex h-full w-full flex-col items-center justify-center text-gray-200">
@@ -152,15 +150,15 @@ export default function ProfilePage() {
           <div className="space-y-4">
             {/* Profile Image */}
             <div className="flex justify-center">
-              {user.profileImage ? (
-                <Image
-                  src={user.profileImage}
-                  alt="Profile"
-                  width={128}
-                  height={128}
-                  className="rounded-full object-cover"
-                />
-              ) : (
+                {user.profileImage ? (
+                  <img
+                    src={user.profileImage}
+                    alt="Profile"
+                    width={128}
+                    height={128}
+                    className="rounded-full object-cover"
+                  />
+                ) : (
                 <div className="h-32 w-32 rounded-full bg-gray-300 flex items-center justify-center">
                   <span className="text-4xl text-gray-600">{user.firstName[0]}</span>
                 </div>
