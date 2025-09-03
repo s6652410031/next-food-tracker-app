@@ -1,103 +1,68 @@
-import Image from "next/image";
+// app/page.tsx
 
-export default function Home() {
+import React from 'react';
+import Image from 'next/image';
+import Link from 'next/link';
+
+/**
+ * HomePage Component
+ * * This is the main landing page for the Food Tracker application.
+ * It features a modern, welcoming design with clear calls to action.
+ * Styled with Tailwind CSS for a responsive and clean user interface.
+ */
+export default function HomePage() {
   return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+    // Main container: Uses a full-screen height and a vibrant gradient background.
+    // Flexbox is used to perfectly center the content both vertically and horizontally.
+    <main className="flex min-h-screen flex-col items-center justify-center bg-gradient-to-br from-green-400 via-cyan-500 to-blue-600 p-6">
+      
+      {/* Content card with a subtle glassmorphism effect for a modern look */}
+      <div className="w-full max-w-md rounded-2xl bg-white/20 p-8 text-center shadow-2xl backdrop-blur-lg">
+        
+        {/* App Image: Optimized using the Next.js Image component. */}
+        <div className="mb-6 flex justify-center">
+          <Image
+            src="/foodtracker.jpg" // IMPORTANT: Place your image in the `public` folder.
+            alt="foodtracker"
+            width={140}
+            height={140}
+            priority // Prioritizes loading this image as it's above the fold.
+            className="drop-shadow-lg"
+          />
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+
+        {/* Main Heading: Large, bold text with a subtle shadow to stand out. */}
+        <h1 className="text-5xl font-extrabold tracking-tight text-white [text-shadow:_2px_2px_4px_rgb(0_0_0_/_20%)]">
+          Welcome to Food Tracker
+        </h1>
+
+        {/* Subheading: Provides a clear and concise mission statement. */}
+        <p className="mt-3 text-xl text-gray-100 [text-shadow:_1px_1px_2px_rgb(0_0_0_/_20%)]">
+          Track your meal!!!
+        </p>
+
+        {/* Action Buttons Container: Uses Flexbox for responsive button layout. */}
+        <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:justify-center">
+          
+          {/* Register Button: Uses Next.js Link for fast, client-side navigation. */}
+          <Link href="/register" passHref>
+            <button 
+              className="transform rounded-full bg-white px-10 py-3 font-semibold text-cyan-600 shadow-lg transition-transform duration-300 hover:-translate-y-1 hover:bg-gray-50 focus:outline-none focus:ring-4 focus:ring-white/50"
+            >
+              Register
+            </button>
+          </Link>
+          
+          {/* Login Button: Styled as a secondary action. */}
+          <Link href="/login" passHref>
+            <button 
+              className="transform rounded-full bg-blue-600 px-10 py-3 font-semibold text-white shadow-lg ring-1 ring-blue-500/50 transition-transform duration-300 hover:-translate-y-1 hover:bg-blue-700 focus:outline-none focus:ring-4 focus:ring-blue-500/50"
+            >
+              Login
+            </button>
+          </Link>
+        </div>
+      </div>
+    </main>
   );
 }
